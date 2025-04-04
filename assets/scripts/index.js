@@ -80,6 +80,21 @@ function finalizarTarea() {
   }
 }
 
+/* Mostrar tareas disponibles */
+function monstrarTareasDisponibles() {
+  if(tareas.lenght == 0) {
+    alert("No hay tareas disponibles");
+  } else {
+    let mensaje = "Tareas disponibles:\n";
+    // Recorre el array para mostrar las tareas que hay disponibles
+    tareas.forEach((tarea, index) => { 
+      mensaje += `${index + 1}. ${tarea}\n`;
+    });
+    alert(mensaje);
+    console.log("Tareas disponible: " + tareas);
+  }
+}
+
 /* Menu de usuario */
 function menuUsuario() {
   let controlMenu = true;
@@ -104,7 +119,7 @@ function menuUsuario() {
         finalizarTarea();
         break;
       case "4":
-        alert("Tareas disponibles: \n" + tareas.join("\n"));
+        monstrarTareasDisponibles();
         break;
       case "5":
         controlMenu = false;
