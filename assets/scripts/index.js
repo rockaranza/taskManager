@@ -37,8 +37,8 @@ function seleccionarTarea() {
 }
 
 /* Tomar una tarea */
-function tomarTarea() {
-  if(usuario.tarea !== null) { // Comprueba que no exista una tarea asignada sin terminar.
+function tomarTarea(usuario) {
+  if(usuario.tarea !== null) {
     alert(usuario.nombre + ", ya tienes una tarea asignada. Finalizala antes de volver a tomar una nueva.");
   } else {
     let asignarTarea = seleccionarTarea();
@@ -53,11 +53,11 @@ function tomarTarea() {
 }
 
 /* Iniciar Tarea */
-function iniciarTarea() {
+function iniciarTarea(usuario) {
   if (usuario.tarea == null) {
     alert("Primero selecciona una tarea.");
   } else if (usuario.iniciada == null) {
-    usuario.iniciada = new Date(); // Capturo la fecha del sistema para conocer cuando comenzo la tarea.
+    usuario.iniciada = new Date();
     alert("Tarea iniciada: " + usuario.tarea);
     console.log(usuario.iniciada);
   } else {
@@ -66,12 +66,14 @@ function iniciarTarea() {
 }
 
 /* Finalizar Tarea */
-function finalizarTarea() {
+function finalizarTarea(usuario) {
   if (usuario.iniciada == null) {
     alert("No hay tarea iniciada");
   } else {
     usuario.finalizada = new Date();
-    usuario.tareasTerminadas.push(usuario.tarea + " || Iniciada: " + usuario.iniciada + " || Finalizada: " + usuario.finalizada);
+    usuario.tareasTerminadas.push(
+      usuario.tarea + " || Iniciada: " + usuario.iniciada + " || Finalizada: " + usuario.finalizada
+    );
     console.log(usuario.tareasTerminadas);
     alert("Tarea finalizada: " + usuario.tarea);
     usuario.tarea = null;
@@ -110,13 +112,13 @@ function menuUsuario() {
 
     switch (menu) {
       case "1":
-        tomarTarea();
+        tomarTarea(usuario);
         break;
       case "2":
-        iniciarTarea();
+        iniciarTarea(usuario);
         break;
       case "3":
-        finalizarTarea();
+        finalizarTarea(usuario);
         break;
       case "4":
         monstrarTareasDisponibles();
