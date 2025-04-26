@@ -3,10 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/styles/index.css">
   <script defer src="./assets/scripts/index.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <h1>Semana 4 - Entrega 1</h1>
+  
+  <header class="headerContainer">
+    <div class="headerContainer-title">
+      <h1>TaskFlow</h1>
+    </div>
+    <div class="headerContainer-user">    
+      <img src="./assets/images/Usuario1.png" alt="Usuario">
+      <h3>Carlos Ramírez</h3>
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </div>
+  </header>
+  
+  <main>
+    <div class="menuContainer">
+      
+      <nav class="menuContainer-nav">
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-list"></i>Tareas</a></li>
+          <li><a href="#"><i class="fa-solid fa-user-group"></i>Empleados</a></li>
+          <li><a href="#"><i class="fa-solid fa-clipboard-check"></i>Reportes</a></li>
+        </ul>
+      </nav>
+      
+    </div>
+    <section class="mainContainer">
+      <div class="mainContainer-header">
+        <h2>Tareas</h2>
+        <button class="button" id="new-task-button">+ Nueva Tarea</button>
+      </div>
+      <div class="mainContainer-tasks" id="tasks-container">
+        
+        <!-- <div class="task-card">
+          <div class="task-card-info">
+            <h3>Task 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="status">In Progress</div>
+          </div>
+          <div class="task-card-icons">
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div> -->
+
+      </div>    
+    </section>
+
+  </main>
+  <script src="https://kit.fontawesome.com/ae6add6e95.js" crossorigin="anonymous"></script>
 </body>
 </html>

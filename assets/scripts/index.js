@@ -1,16 +1,106 @@
-const usuario = {
-  nombre: "Juan",
-  apellido: "Pérez",
-  tarea: null,
-  iniciada: null,
-  finalizada: null,
-  tareasTerminadas: [],
-};
+const taskContainer = document.getElementById("tasks-container");
+const newTaskButton = document.getElementById("new-task-button");
 
-/* Listado de tareas que el usuario puede seleccionar */
-const tareas = ["Tarea 1", "Tarea 2", "Tarea 3", "Tarea 4", "Tarea 5"];
+/* USUARIOS */
+const usuarios = [
+  {
+    nombre: "Carlos",
+    apellido: "Ramírez",
+    foto: "../images/Usuario1.png",
+    cargo: "supervisor",
+    tarea_asignada: "",
+    tareas_resueltas: []
+  },
+  {
+    nombre: "Ana",
+    apellido: "Martínez",
+    foto: "../images/Usuario2.png",
+    cargo: "limpiador",
+    tarea_asignada: "",
+    tareas_resueltas: []
+  },
+  {
+    nombre: "Luis",
+    apellido: "Fernández",
+    foto: "../images/Usuario3.png",
+    cargo: "limpiador",
+    tarea_asignada: "",
+    tareas_resueltas: []
+  },
+  {
+    nombre: "Sofía",
+    apellido: "Pérez",
+    foto: "../images/Usuario4.png",
+    cargo: "limpiador",
+    tarea_asignada: "",
+    tareas_resueltas: []
+  }
+];
+
+/* Listado de tareas */
+const tareas = [
+  {
+    nombre_tarea: "Limpieza de salas de clases",
+    lugar: "Pabellón A",
+    descripcion: "Barrido y trapeado de pisos, limpieza de pupitres y pizarras.",
+    estado: "pendiente",
+    asignada: "",
+    creador: "María González",
+    fecha_creacion: "2025-04-23",
+    fecha_asignacion: "",
+    fecha_finalizacion: ""
+  },
+  {
+    nombre_tarea: "Desinfección de baños",
+    lugar: "Sector B",
+    descripcion: "Limpieza profunda y desinfección de sanitarios, lavamanos y espejos.",
+    estado: "pendiente",
+    asignada: "",
+    creador: "Carlos Ramírez",
+    fecha_creacion: "2025-04-23",
+    fecha_asignacion: "",
+    fecha_finalizacion: ""
+  },
+  {
+    nombre_tarea: "Recolección de basura",
+    lugar: "Patio central",
+    descripcion: "Vaciar basureros, recoger residuos y dejar bolsas en el punto de acopio.",
+    estado: "pendiente",
+    asignada: "",
+    creador: "María González",
+    fecha_creacion: "2025-04-23",
+    fecha_asignacion: "",
+    fecha_finalizacion: ""
+  }
+];
+
 const tareasTerminadas = [];
 
+/* Mostrar tareas */
+function mostrarTareas() {
+  taskContainer.innerHTML = ""; // Limpiar el contenedor de tareas
+  tareas.forEach((tarea) => {
+    const tareaDiv = document.createElement("div");
+    tareaDiv.classList.add("task-card");
+    tareaDiv.innerHTML = `
+          <div class="task-card-info">
+            <h3>${tarea.nombre_tarea}</h3>
+            <p>${tarea.descripcion}</p>
+            <div class="status">In Progress</div>
+          </div>
+          <div class="task-card-icons">
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+      `;
+    taskContainer.appendChild(tareaDiv);
+  });
+}
+
+/* Modal para nueva tarea */
+function mostrarModal() {
+}
 
 /* Seleccionar tarea */
 function seleccionarTarea() {
@@ -97,40 +187,4 @@ function monstrarTareasDisponibles() {
   }
 }
 
-/* Menu de usuario */
-function menuUsuario() {
-  let controlMenu = true;
-  do {
-    let menu = prompt(`
-      Bienvenido. Seleccione una opcion:
-      1. Tomar tarea
-      2. Iniciar tarea
-      3. Finalizar tarea
-      4. Ver tareas disponibles
-      5. Salir
-      `);
-
-    switch (menu) {
-      case "1":
-        tomarTarea(usuario);
-        break;
-      case "2":
-        iniciarTarea(usuario);
-        break;
-      case "3":
-        finalizarTarea(usuario);
-        break;
-      case "4":
-        monstrarTareasDisponibles();
-        break;
-      case "5":
-        controlMenu = false;
-        alert("Saliendo...");
-        break;
-      default:
-        alert("Opcion no valida");
-    }
-  } while (controlMenu);
-}
-
-menuUsuario();
+mostrarTareas();

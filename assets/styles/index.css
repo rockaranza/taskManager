@@ -1,0 +1,224 @@
+:root {
+
+  /* Colores */
+  --color-bg-main: #ffffff;
+  --color-blue-dark: #1E3A8A;
+  --color-blue-medium: #2563EB;
+  --color-blue-light: #DBEAFE;
+  --color-green-soft: #D1FAE5;
+  --color-gray-dark: #4B5563;
+  --color-gray-light: #F3F4F6;
+
+  /* Tipografia */
+  --font-family-base: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-title-size: 24px;
+  --font-title-weight: 700;
+  --font-task-name-size: 16px;
+  --font-task-name-weight: 600;
+  --font-description-size: 14px;
+  --font-description-weight: 400;
+  --font-button-size: 14px;
+  --font-button-weight: 500;
+  --font-sidebar-size: 16px;
+  --font-sidebar-weight: 600;
+
+}
+
+/* Reset estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  font-family: var(--font-family-base);
+}
+
+
+body {
+  background-color: var(--color-blue-dark);
+}
+
+main {
+  display: flex;
+}
+
+.headerContainer {
+  width: 100%;
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.headerContainer-title {
+  display: flex;
+  align-items: center;
+}
+
+.headerContainer-user{
+  display: flex;
+  align-items: center;
+}
+
+.headerContainer-user img {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+.headerContainer-user h3 {
+  color: var(--color-gray-dark);
+  font-size: var(--font-task-name-size);
+  font-weight: var(--font-task-name-weight);
+  margin-right: 2rem;
+}
+
+.headerContainer-user i {
+  color: var(--color-blue-dark);
+  font-size: 2rem;
+  cursor: pointer;
+}
+.headerContainer-user i:hover {
+  color: var(--color-blue-medium);
+}
+
+/* MENU CONTAINER ASIDE */
+.menuContainer {
+  width: 20%;
+  height: 100vh;
+  padding: 2rem 2rem;
+  background-color: var(--color-blue-dark);
+}
+
+.menuContainer-nav {
+  margin: 2rem 0;
+}
+
+.menuContainer-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menuContainer-nav ul li {
+  margin-bottom: 2rem;
+}
+
+.menuContainer-nav ul li a {
+  text-decoration: none;
+  color: var(--color-bg-main);
+  font-size: var(--font-sidebar-size);
+  font-weight: var(--font-sidebar-weight);
+}
+
+.menuContainer-nav ul li a i {
+  padding-right: 1rem;
+  color: var(--color-bg-main);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* FIN MENU CONTAINER ASIDE*/
+
+/* MAIN CONTAINER */
+.mainContainer {
+  width: 80%;
+  height: 100vh;
+  padding: 2rem 5rem;
+  background-color: var(--color-bg-main);
+}
+
+.mainContainer-header {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainContainer-header h2 {
+  color: var(--color-blue-dark);
+  font-size: var(--font-title-size);
+  font-weight: var(--font-title-weight);
+}
+
+.mainContainer-tasks {
+
+}
+
+.task-card {
+  width: 100%;
+  display: flex;
+  background-color: var(--color-gray-light);
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem 2rem;
+}
+
+.task-card-info {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.task-card-info h3 {
+  color: var(--color-gray-dark);
+  font-size: var(--font-task-name-size);
+  font-weight: var(--font-task-name-weight);
+  margin-bottom: 1rem;
+}
+
+.task-card-info p {
+  color: var(--color-gray-dark);
+  font-size: var(--font-description-size);
+  font-weight: var(--font-description-weight);
+  margin-bottom: 1rem;
+}
+
+.task-card-icons {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-card-icons i {
+  color: var(--color-blue-dark);
+  font-size: 2rem;
+  cursor: pointer;
+}
+.task-card-icons i:hover {
+  color: var(--color-blue-medium);
+}
+
+/* FIN MAIN CONTAINER */
+
+/* ELEMENTOS */
+
+.button {
+  width: 12rem;
+  height: 3rem;
+  background-color: var(--color-blue-dark);
+  color: var(--color-bg-main);
+  font-size: var(--font-button-size);
+  font-weight: var(--font-button-weight);
+  border-radius: 0.5rem;
+  border: none;
+}
+.button:hover {
+  background-color: var(--color-blue-medium);
+}
+
+.status {
+  width: 10rem;
+  text-align: center;
+  background-color: var(--color-green-soft);
+  color: var(--color-blue-dark);
+  font-size: var(--font-button-size);
+  font-weight: var(--font-button-weight);
+  border-radius: 0.5rem;
+  border: none;
+}
