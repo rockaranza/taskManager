@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/styles/index.css">
   <script defer src="./assets/scripts/index.js"></script>
-  <title>Document</title>
+  <title>TaskFlow</title>
 </head>
 <body>
   
@@ -56,6 +56,22 @@
     </section>
 
   </main>
+  
+  <!-- MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal">
+      <h2>Crear Nueva Tarea</h2>
+      <form>
+        <input type="text" placeholder="Nombre de la tarea">
+        <input type="text" placeholder="Lugar de trabajo">
+        <input type="text" placeholder="Descripción">
+        <p id="requestin-user"></p>
+        <button type="submit">Guardar</button>
+        <button type="button" id="close-modal">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
   <script src="https://kit.fontawesome.com/ae6add6e95.js" crossorigin="anonymous"></script>
 </body>
 </html>

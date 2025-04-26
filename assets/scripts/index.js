@@ -1,5 +1,7 @@
 const taskContainer = document.getElementById("tasks-container");
 const newTaskButton = document.getElementById("new-task-button");
+const modalOverlay = document.getElementById("modal-overlay");
+const closeModal = document.getElementById("close-modal");
 
 /* USUARIOS */
 const usuarios = [
@@ -99,8 +101,15 @@ function mostrarTareas() {
 }
 
 /* Modal para nueva tarea */
-function mostrarModal() {
+newTaskButton.addEventListener('click', () => {
+  modalOverlay.classList.remove('hidden')
 }
+)
+/* Cerrar modal */
+closeModal.addEventListener('click', () => {
+  modalOverlay.classList.add('hidden'); 
+})
+
 
 /* Seleccionar tarea */
 function seleccionarTarea() {
