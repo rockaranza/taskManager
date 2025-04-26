@@ -39,18 +39,7 @@
       </div>
       <div class="mainContainer-tasks" id="tasks-container">
         
-        <!-- <div class="task-card">
-          <div class="task-card-info">
-            <h3>Task 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="status">In Progress</div>
-          </div>
-          <div class="task-card-icons">
-            <i class="fa-solid fa-pen"></i>
-            <i class="fa-solid fa-trash"></i>
-            <i class="fa-solid fa-eye"></i>
-          </div>
-        </div> -->
+        <!-- SE MUESTRAN TAREAS PENDIENTES -->
 
       </div>    
     </section>
@@ -61,10 +50,10 @@
   <div class="modal-overlay hidden" id="modal-overlay">
     <div class="modal">
       <h2>Crear Nueva Tarea</h2>
-      <form>
-        <input type="text" placeholder="Nombre de la tarea">
-        <input type="text" placeholder="Lugar de trabajo">
-        <input type="text" placeholder="Descripción">
+      <form id="new-task-form">
+        <input type="text" placeholder="Nombre de la tarea" id="task-name">
+        <input type="text" placeholder="Lugar de trabajo" id="task-location">
+        <textarea col= "50"  rows="10" placeholder="Descripción" id="task-description"></textarea>
         <p id="requestin-user"></p>
         <button type="submit">Guardar</button>
         <button type="button" id="close-modal">Cancelar</button>

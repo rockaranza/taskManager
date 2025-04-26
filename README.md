@@ -11,7 +11,6 @@ Aplicación web que simula la administración de tareas es un equipo de limpieza
 
 En desarrollo activo.
 
-Actualmente solo implementó el sistema para tomar tareas por parte de un usuario.
 
 
 ## Roadmap
@@ -20,7 +19,6 @@ Actualmente solo implementó el sistema para tomar tareas por parte de un usuari
 
 - Gestión de tareas según cada rol de usuario.
 
-- Creación de UI
 
 
 
