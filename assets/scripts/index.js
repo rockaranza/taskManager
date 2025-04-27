@@ -79,6 +79,11 @@ const tareas = [
 
 const tareasTerminadas = [];
 
+/* GUARDAR USUARIOS EN LOCALSTORAGE */
+const usuariosString = JSON.stringify(usuarios);
+console.log(usuariosString);
+
+
 /* Mostrar tareas */
 function mostrarTareas() {
   taskContainer.innerHTML = ""; // Limpiar el contenedor de tareas
@@ -141,5 +146,9 @@ function guardarTarea(event) {
 newTaskForm.addEventListener('submit', guardarTarea);
 
 
-
+/* Eliminar tareas */
+/* Editar tareas */
+/* Asignar tareas */
+/* Marcar tareas como terminadas */
+/* Mostrar tareas terminadas */
 mostrarTareas();
