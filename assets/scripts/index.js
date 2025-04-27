@@ -125,7 +125,7 @@ function guardarTarea(event) {
     estado: "pendiente",
     asignada: "",
     creador: "María González",
-    fecha_creacion: "",
+    fecha_creacion: new Date().toISOString().split('T')[0], // Fecha actual
     fecha_asignacion: "",
     fecha_finalizacion: ""
   };
