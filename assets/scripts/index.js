@@ -42,79 +42,83 @@ const usuarios = [
 
 /* Listado de tareas */
 const tareas = [
-  {
-    nombre_tarea: "Limpieza de salas de clases",
-    lugar: "Pabellón A",
-    descripcion: "Barrido y trapeado de pisos, limpieza de pupitres y pizarras.",
-    estado: "pendiente",
-    asignada: "",
-    creador: "María González",
-    fecha_creacion: "2025-04-23",
-    fecha_asignacion: "",
-    fecha_finalizacion: ""
-  },
-  {
-    nombre_tarea: "Desinfección de baños",
-    lugar: "Sector B",
-    descripcion: "Limpieza profunda y desinfección de sanitarios, lavamanos y espejos.",
-    estado: "pendiente",
-    asignada: "",
-    creador: "Carlos Ramírez",
-    fecha_creacion: "2025-04-23",
-    fecha_asignacion: "",
-    fecha_finalizacion: ""
-  },
-  {
-    nombre_tarea: "Recolección de basura",
-    lugar: "Patio central",
-    descripcion: "Vaciar basureros, recoger residuos y dejar bolsas en el punto de acopio.",
-    estado: "pendiente",
-    asignada: "",
-    creador: "María González",
-    fecha_creacion: "2025-04-23",
-    fecha_asignacion: "",
-    fecha_finalizacion: ""
-  }
+  // {
+  //   nombre_tarea: "Limpieza de salas de clases",
+  //   lugar: "Pabellón A",
+  //   descripcion: "Barrido y trapeado de pisos, limpieza de pupitres y pizarras.",
+  //   estado: "pendiente",
+  //   asignada: "",
+  //   creador: "María González",
+  //   fecha_creacion: "2025-04-23",
+  //   fecha_asignacion: "",
+  //   fecha_finalizacion: ""
+  // },
+  // {
+  //   nombre_tarea: "Desinfección de baños",
+  //   lugar: "Sector B",
+  //   descripcion: "Limpieza profunda y desinfección de sanitarios, lavamanos y espejos.",
+  //   estado: "pendiente",
+  //   asignada: "",
+  //   creador: "Carlos Ramírez",
+  //   fecha_creacion: "2025-04-23",
+  //   fecha_asignacion: "",
+  //   fecha_finalizacion: ""
+  // },
+  // {
+  //   nombre_tarea: "Recolección de basura",
+  //   lugar: "Patio central",
+  //   descripcion: "Vaciar basureros, recoger residuos y dejar bolsas en el punto de acopio.",
+  //   estado: "pendiente",
+  //   asignada: "",
+  //   creador: "María González",
+  //   fecha_creacion: "2025-04-23",
+  //   fecha_asignacion: "",
+  //   fecha_finalizacion: ""
+  // }
 ];
 
 const tareasTerminadas = [];
+const tareasEliminadas = [];
 
 /* GUARDAR USUARIOS EN LOCALSTORAGE */
 const usuariosString = JSON.stringify(usuarios);
-console.log(usuariosString);
-
+localStorage.setItem("usuarios", usuariosString);
 
 /* Mostrar tareas */
 function mostrarTareas() {
-  taskContainer.innerHTML = ""; // Limpiar el contenedor de tareas
-  tareas.forEach((tarea) => {
-    const tareaDiv = document.createElement("div");
-    tareaDiv.classList.add("task-card");
-    tareaDiv.innerHTML = `
+  const tareasStorage = localStorage.getItem('tareas');
+  let tareasParaRenderizar = [];
+
+  if(tareasStorage) {
+    tareasParaRenderizar = JSON.parse(tareasStorage);
+  }
+
+  taskContainer.innerHTML = '';
+
+  if(tareasParaRenderizar.length > 0) {
+    tareasParaRenderizar.forEach((tarea) => {
+      taskContainer.innerHTML += `
+        <div class="task-card">
           <div class="task-card-info">
             <h3>${tarea.nombre_tarea}</h3>
             <p>${tarea.descripcion}</p>
-            <div class="status">In Progress</div>
+            <div class="status">${tarea.estado}</div>
           </div>
           <div class="task-card-icons">
             <i class="fa-solid fa-pen"></i>
             <i class="fa-solid fa-trash"></i>
             <i class="fa-solid fa-eye"></i>
           </div>
+        </div>
       `;
-    taskContainer.appendChild(tareaDiv);
-  });
+    });
+  } else {
+    taskContainer.innerHTML = `
+    <h2>No hay tareas disponibles</h2>
+    <p>Agrega una nueva tarea haciendo clic en el botón "Nueva Tarea".</p>
+    `;
+  }
 }
-
-/* Modal para nueva tarea */
-newTaskButton.addEventListener('click', () => {
-  modalOverlay.classList.remove('hidden')
-}
-)
-/* Cerrar modal */
-closeModal.addEventListener('click', () => {
-  modalOverlay.classList.add('hidden'); 
-})
 
 /* Guardar Tarea */
 function guardarTarea(event) {
@@ -140,15 +144,28 @@ function guardarTarea(event) {
   document.getElementById("task-description").value = "";
 
   tareas.push(nuevaTarea);
+  tareasString = JSON.stringify(tareas);
+  localStorage.setItem('tareas', tareasString);
   mostrarTareas();
   modalOverlay.classList.add('hidden');
 }
-newTaskForm.addEventListener('submit', guardarTarea);
-
 
 /* Eliminar tareas */
 /* Editar tareas */
 /* Asignar tareas */
 /* Marcar tareas como terminadas */
 /* Mostrar tareas terminadas */
+
+
+newTaskForm.addEventListener('submit', guardarTarea);
+/* Modal para nueva tarea */
+newTaskButton.addEventListener('click', () => {
+  modalOverlay.classList.remove('hidden')
+}
+)
+/* Cerrar modal */
+closeModal.addEventListener('click', () => {
+  modalOverlay.classList.add('hidden'); 
+})
+
 mostrarTareas();
