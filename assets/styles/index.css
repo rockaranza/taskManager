@@ -8,6 +8,9 @@
   --color-green-soft: #D1FAE5;
   --color-gray-dark: #4B5563;
   --color-gray-light: #F3F4F6;
+  --color-red-light: #FEE2E2;
+  --color-red-dark: #B91C1C;
+  --color-red-medium: #DC2626;
 
   /* Tipografia */
   --font-family-base: 'Inter', 'Helvetica Neue', sans-serif;
@@ -211,10 +214,39 @@ main {
 }
 
 .modal {
-  background-color: var(--color-bg-main);
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
   padding: 2rem;
   border-radius: 1rem;
-  width: 30rem;
+  background-color: var(--color-bg-main);
+}
+
+.modal h2 {
+  color: var(--color-gray-dark);;
+  margin-bottom: 2rem;
+  font-size:var(--font-task-name-size);
+  font-weight: var(--font-task-name-weight);
+}
+
+.modal input, 
+.modal textarea {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-gray-dark);
+  border-radius: 0.5rem;
+  font-size: var(--font-description-size);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
 }
 
 .hidden {
@@ -225,8 +257,9 @@ main {
 /* ELEMENTOS */
 
 .button {
-  width: 12rem;
+  width: 10rem;
   height: 3rem;
+  margin-right: 0.5rem;;
   background-color: var(--color-blue-dark);
   color: var(--color-bg-main);
   font-size: var(--font-button-size);
@@ -236,6 +269,17 @@ main {
 }
 .button:hover {
   background-color: var(--color-blue-medium);
+}
+
+.close-button {
+  width: 10rem;
+  height: 3rem;
+  background-color: var(--color-red-light);
+  color: var(--color-red-dark);
+  font-size: var(--font-button-size);
+  font-weight: var(--font-button-weight);
+  border-radius: 0.5rem;
+  border: none;
 }
 
 .status {
