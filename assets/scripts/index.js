@@ -89,12 +89,12 @@ function mostrarUsuarioActivo() {
     headerContainerUser.innerHTML = `
       <img src="${usuarioActivo.foto}" alt="${usuarioActivo.nombre} ${usuarioActivo.apellido}">
       <h3>${usuarioActivo.nombre} ${usuarioActivo.apellido}</h3>
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <i class="fa-solid fa-right-from-bracket" onclick="mostrarWarning()"></i>
       `
   } else {
     headerContainerUser.innerHTML = `
       <h3>Iniciar sesión</h3>
-      <i class="fa-solid fa-right-to-bracket"></i>
+      <i class="fa-solid fa-right-to-bracket" onclick="mostrarWarning()"></i>
     `
   };
 }
@@ -130,9 +130,9 @@ function mostrarTareas() {
           </div>
           
           <div class="task-card-icons">
-            <i class="fa-solid fa-pen"></i>
-            <i class="fa-solid fa-trash"></i>
-            <i class="fa-solid fa-eye"></i>
+            <i class="fa-solid fa-pen" onclick="mostrarWarning()"></i>
+            <i class="fa-solid fa-trash" onclick="mostrarWarning()"></i>
+            <i class="fa-solid fa-eye" onclick="mostrarWarning()"></i>
           </div>
         </div>
       `;
@@ -200,6 +200,15 @@ function renderizarUsuarios() {
 /* Marcar tareas como terminadas */
 /* Mostrar tareas terminadas */
 
+/* MOMENTANEO */
+function mostrarWarning() {
+  const warningModal = document.getElementById("warning-modal");
+  warningModal.classList.remove("hidden");
+
+  document.getElementById("close-warning-modal").addEventListener("click", () => {
+    document.getElementById("warning-modal").classList.add("hidden");
+  });
+}
 
 newTaskForm.addEventListener('submit', guardarTarea);
 /* Modal para nueva tarea */
