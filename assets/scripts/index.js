@@ -99,7 +99,17 @@ function mostrarTareas() {
             <h3>${tarea.nombre_tarea}</h3>
             <p>${tarea.descripcion}</p>
             <div class="status">${tarea.estado}</div>
+            <div class="task-assigned">
+              <span class="task-assigned-title">Asignado a:</span>
+              <div class="task-assigned-user">
+                ${tarea.asignada ? `
+                  <span>${tarea.asignada}</span>` : `
+                  <span class="task-assigned-user-empty">Sin asignar</span>
+                `}
+              </div>
+            </div>
           </div>
+          
           <div class="task-card-icons">
             <i class="fa-solid fa-pen"></i>
             <i class="fa-solid fa-trash"></i>
@@ -122,14 +132,16 @@ function guardarTarea(event) {
   const nombreTarea = document.getElementById("task-name").value;
   const lugarTarea = document.getElementById("task-location").value;
   const descripcionTarea = document.getElementById("task-description").value;
+  const usuarioAsignado = document.getElementById("user-select").value;
+
 
   const nuevaTarea = {
     nombre_tarea: nombreTarea,
     lugar: lugarTarea,
     descripcion: descripcionTarea,
     estado: "pendiente",
-    asignada: "",
-    creador: "María González",
+    asignada: usuarioAsignado,
+    creador: "Carlos Ramírez",
     fecha_creacion: new Date().toISOString().split('T')[0], // Fecha actual
     fecha_asignacion: "",
     fecha_finalizacion: ""

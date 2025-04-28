@@ -9,11 +9,11 @@
 </head>
 <body>
   
-  <header class="headerContainer">
-    <div class="headerContainer-title">
+  <header class="header-container">
+    <div class="header-container-title">
       <h1>TaskFlow</h1>
     </div>
-    <div class="headerContainer-user">    
+    <div class="header-container-user">    
       <img src="./assets/images/Usuario1.png" alt="Usuario">
       <h3>Carlos Ramírez</h3>
       <i class="fa-solid fa-right-from-bracket"></i>
@@ -21,9 +21,9 @@
   </header>
   
   <main>
-    <div class="menuContainer">
+    <div class="menu-container">
       
-      <nav class="menuContainer-nav">
+      <nav class="menu-container-nav">
         <ul>
           <li><a href="#"><i class="fa-solid fa-list"></i>Tareas</a></li>
           <li><a href="#"><i class="fa-solid fa-user-group"></i>Empleados</a></li>
@@ -32,12 +32,12 @@
       </nav>
       
     </div>
-    <section class="mainContainer">
-      <div class="mainContainer-header">
+    <section class="main-container">
+      <div class="main-container-header">
         <h2>Tareas</h2>
         <button class="button" id="new-task-button">+ Nueva Tarea</button>
       </div>
-      <div class="mainContainer-tasks" id="tasks-container">
+      <div class="main-container-tasks" id="tasks-container">
         
         <!-- SE MUESTRAN TAREAS PENDIENTES -->
 
@@ -54,9 +54,9 @@
         <input type="text" placeholder="Nombre de la tarea" id="task-name">
         <input type="text" placeholder="Lugar de trabajo" id="task-location">
         <textarea col= "50"  rows="10" placeholder="Descripción" id="task-description"></textarea>
-        <div id="select-container" class="selectContainer">
+        <div id="select-container" class="select-container">
           <label for="user-select">Asignar a:</label>
-          <select id="user-select" class="formSelect">
+          <select id="user-select" class="form-select">
             <option value="">Seleccionar usuario...</option>
             <!-- Voy a mostrar los usuarios -->
           </select>
