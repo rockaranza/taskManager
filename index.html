@@ -54,7 +54,13 @@
         <input type="text" placeholder="Nombre de la tarea" id="task-name">
         <input type="text" placeholder="Lugar de trabajo" id="task-location">
         <textarea col= "50"  rows="10" placeholder="Descripción" id="task-description"></textarea>
-        <select name="" id=""></select>
+        <div id="select-container" class="selectContainer">
+          <label for="user-select">Asignar a:</label>
+          <select id="user-select" class="formSelect">
+            <option value="">Seleccionar usuario...</option>
+            <!-- Voy a mostrar los usuarios -->
+          </select>
+        </div>
         <p id="requestin-user"></p>
         <div class="modal-button-container">
           <button type="submit" class="button">Guardar</button>

@@ -18,7 +18,7 @@ const usuarios = [
     nombre: "Ana",
     apellido: "Martínez",
     foto: "../images/Usuario2.png",
-    cargo: "limpiador",
+    cargo: "colaborador",
     tarea_asignada: "",
     tareas_resueltas: []
   },
@@ -26,7 +26,7 @@ const usuarios = [
     nombre: "Luis",
     apellido: "Fernández",
     foto: "../images/Usuario3.png",
-    cargo: "limpiador",
+    cargo: "colaborador",
     tarea_asignada: "",
     tareas_resueltas: []
   },
@@ -34,7 +34,7 @@ const usuarios = [
     nombre: "Sofía",
     apellido: "Pérez",
     foto: "../images/Usuario4.png",
-    cargo: "limpiador",
+    cargo: "colaborador",
     tarea_asignada: "",
     tareas_resueltas: []
   }
@@ -79,10 +79,6 @@ const tareas = [
 
 const tareasTerminadas = [];
 const tareasEliminadas = [];
-
-/* GUARDAR USUARIOS EN LOCALSTORAGE */
-const usuariosString = JSON.stringify(usuarios);
-localStorage.setItem("usuarios", usuariosString);
 
 /* Mostrar tareas */
 function mostrarTareas() {
@@ -150,6 +146,23 @@ function guardarTarea(event) {
   modalOverlay.classList.add('hidden');
 }
 
+function renderizarUsuarios() {
+  const selectElement = document.getElementById("user-select");
+
+  selectElement.innerHTML = '<option value=" ">Seleccionar usuario...</option>';
+
+  // Me quedo solo con los usuarios colaboradores
+  const usuariosColaboradores = usuarios.filter(usuario => usuario.cargo !== "supervisor");
+
+  // Recorro el array para rendirizarlos
+  usuariosColaboradores.forEach(usuario => {
+    const option = document.createElement("option");
+    option.value = `${usuario.nombre} ${usuario.apellido}`;
+    option.textContent = `${usuario.nombre} ${usuario.apellido}`;
+    selectElement.appendChild(option);
+  });
+}
+
 /* Eliminar tareas */
 /* Editar tareas */
 /* Asignar tareas */
@@ -160,7 +173,8 @@ function guardarTarea(event) {
 newTaskForm.addEventListener('submit', guardarTarea);
 /* Modal para nueva tarea */
 newTaskButton.addEventListener('click', () => {
-  modalOverlay.classList.remove('hidden')
+  modalOverlay.classList.remove('hidden');
+  renderizarUsuarios();
 }
 )
 /* Cerrar modal */

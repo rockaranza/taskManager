@@ -243,6 +243,28 @@ main {
   flex-direction: column;
 }
 
+.selectContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.selectContainer label {
+  color: var(--color-gray-dark);
+  font-size: var(--font-description-size);
+  font-weight: var(--font-description-weight);
+  margin-bottom: 0.5rem;
+}
+
+.formSelect {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--color-gray-dark);
+  border-radius: 0.5rem;
+  font-size: var(--font-description-size);  
+}
+
+
 .modal-button-container {
   display: flex;
   justify-content: flex-end;
