@@ -3,13 +3,14 @@ const newTaskButton = document.getElementById("new-task-button");
 const modalOverlay = document.getElementById("modal-overlay");
 const closeModal = document.getElementById("close-modal");
 const newTaskForm = document.getElementById("new-task-form");
+const headerContainerUser = document.getElementById("header-container-user");
 
 /* USUARIOS */
 const usuarios = [
   {
     nombre: "Carlos",
     apellido: "Ramírez",
-    foto: "../images/Usuario1.png",
+    foto: "./assets/images/Usuario1.png",
     cargo: "supervisor",
     tarea_asignada: "",
     tareas_resueltas: []
@@ -17,7 +18,7 @@ const usuarios = [
   {
     nombre: "Ana",
     apellido: "Martínez",
-    foto: "../images/Usuario2.png",
+    foto: "../assets/images/Usuario2.png",
     cargo: "colaborador",
     tarea_asignada: "",
     tareas_resueltas: []
@@ -25,7 +26,7 @@ const usuarios = [
   {
     nombre: "Luis",
     apellido: "Fernández",
-    foto: "../images/Usuario3.png",
+    foto: "./assets/images/Usuario3.png",
     cargo: "colaborador",
     tarea_asignada: "",
     tareas_resueltas: []
@@ -33,7 +34,7 @@ const usuarios = [
   {
     nombre: "Sofía",
     apellido: "Pérez",
-    foto: "../images/Usuario4.png",
+    foto: "./assets/images/Usuario4.png",
     cargo: "colaborador",
     tarea_asignada: "",
     tareas_resueltas: []
@@ -79,6 +80,24 @@ const tareas = [
 
 const tareasTerminadas = [];
 const tareasEliminadas = [];
+
+/* Mostrar usuario activo */
+function mostrarUsuarioActivo() {
+  const usuarioActivo = usuarios.find(usuario => usuario.cargo == "supervisor"); //SOLO PARA PRUEBAS, DEBO AGREGAR UN LOGIN O SELECCION DE USUARIO
+
+  if (usuarioActivo) {
+    headerContainerUser.innerHTML = `
+      <img src="${usuarioActivo.foto}" alt="${usuarioActivo.nombre} ${usuarioActivo.apellido}">
+      <h3>${usuarioActivo.nombre} ${usuarioActivo.apellido}</h3>
+      <i class="fa-solid fa-right-from-bracket"></i>
+      `
+  } else {
+    headerContainerUser.innerHTML = `
+      <h3>Iniciar sesión</h3>
+      <i class="fa-solid fa-right-to-bracket"></i>
+    `
+  };
+}
 
 /* Mostrar tareas */
 function mostrarTareas() {
@@ -193,5 +212,8 @@ newTaskButton.addEventListener('click', () => {
 closeModal.addEventListener('click', () => {
   modalOverlay.classList.add('hidden'); 
 })
-
-mostrarTareas();
+document.addEventListener('DOMContentLoaded', () => {
+  mostrarUsuarioActivo();
+  mostrarTareas();
+});
+// mostrarTareas();
