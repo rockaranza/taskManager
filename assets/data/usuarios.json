@@ -3,7 +3,7 @@
     {
       "nombre": "Carlos",
       "apellido": "Ramírez",
-      "foto": "/CoderHouse - JS/assets/images/Usuario1.png",
+      "foto": "./assets/images/Usuario1.png",
       "cargo": "supervisor",
       "tarea_asignada": "",
       "tareas_resueltas": []
@@ -11,7 +11,7 @@
     {
       "nombre": "Ana",
       "apellido": "Martínez",
-      "foto": "/CoderHouse - JS/assets/images/Usuario2.png",
+      "foto": "./assets/images/Usuario2.png",
       "cargo": "colaborador",
       "tarea_asignada": "",
       "tareas_resueltas": []
@@ -19,7 +19,7 @@
     {
       "nombre": "Sofía",
       "apellido": "Pérez",
-      "foto": "/CoderHouse - JS/assets/images/Usuario3.png",
+      "foto": "./assets/images/Usuario3.png",
       "cargo": "colaborador",
       "tarea_asignada": "",
       "tareas_resueltas": []
@@ -27,7 +27,7 @@
     {
       "nombre": "Luis",
       "apellido": "Fernández",
-      "foto": "/CoderHouse - JS/assets/images/Usuario4.png",
+      "foto": "./assets/images/Usuario4.png",
       "cargo": "colaborador",
       "tarea_asignada": "",
       "tareas_resueltas": []
