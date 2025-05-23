@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/styles/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script defer src="./assets/scripts/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>TaskFlow</title>
 </head>
 <body>
@@ -14,67 +16,48 @@
       <h1>TaskFlow</h1>
     </div>
     <div class="header-container-user" id="header-container-user">    
-      <!-- Lo lleno desde el JS para que posteriormente sea un login -->
+      <!-- Se llenará dinámicamente con el usuario activo y el botón de cierre de sesión -->
     </div>
   </header>
   
   <main>
     <div class="menu-container">
-      
       <nav class="menu-container-nav">
         <ul>
-          <li><a href="#"><i class="fa-solid fa-list"></i>Tareas</a></li>
-          <li><a href="#"><i class="fa-solid fa-user-group"></i>Empleados</a></li>
-          <li><a href="#"><i class="fa-solid fa-clipboard-check"></i>Reportes</a></li>
+          <li>
+            <a href="#" id="tareas-link" class="menu-link">
+              <i class="fa-solid fa-list-check"></i>
+              Tareas
+            </a>
+          </li>
+          <li>
+            <a href="#" id="empleados-link" class="menu-link">
+              <i class="fa-solid fa-users"></i>
+              Empleados
+            </a>
+          </li>
         </ul>
       </nav>
-      
+      <div id="admin-actions" class="menu-container-actions">
+        <button id="clear-data-button" class="danger-button">
+          <i class="fa-solid fa-trash"></i>
+          Borrar datos
+        </button>
+      </div>
     </div>
     <section class="main-container">
       <div class="main-container-header">
-        <h2>Tareas</h2>
-        <button class="button" id="new-task-button">+ Nueva Tarea</button>
+        <h2 id="main-title">Tareas</h2>
+        <button id="new-task-button" class="button">Nueva Tarea</button>
       </div>
-      <div class="main-container-tasks" id="tasks-container">
-        
-        <!-- SE MUESTRAN TAREAS PENDIENTES -->
-
-      </div>    
+      <div id="tasks-container" class="main-container-tasks">
+        <!-- Se mostrarán las tareas dinámicamente -->
+      </div>
+      <div id="employees-container" class="main-container-tasks hidden">
+        <!-- Se mostrarán los empleados dinámicamente -->
+      </div>
     </section>
-
   </main>
-  
-  <!-- MODAL CREAR TAREAS -->
-  <div class="modal-overlay hidden" id="modal-overlay">
-    <div class="modal">
-      <h2>Crear Nueva Tarea</h2>
-      <form id="new-task-form">
-        <input type="text" placeholder="Nombre de la tarea" id="task-name">
-        <input type="text" placeholder="Lugar de trabajo" id="task-location">
-        <textarea col= "50"  rows="10" placeholder="Descripción" id="task-description"></textarea>
-        <div id="select-container" class="select-container">
-          <label for="user-select">Asignar a:</label>
-          <select id="user-select" class="form-select">
-            <option value="">Seleccionar usuario...</option>
-            <!-- Voy a mostrar los usuarios -->
-          </select>
-        </div>
-        <p id="requestin-user"></p>
-        <div class="modal-button-container">
-          <button type="submit" class="button">Guardar</button>
-          <button type="button" id="close-modal" class="close-button">Cancelar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL WARNING -->
-  <div id="warning-modal" class="modal-overlay hidden">
-    <div class="modal">
-      <h2>Función en desarrollo</h2>
-      <button id="close-warning-modal" class="close-button">Cerrar</button>
-    </div>
-  </div>
 
   <script src="https://kit.fontawesome.com/ae6add6e95.js" crossorigin="anonymous"></script>
 </body>

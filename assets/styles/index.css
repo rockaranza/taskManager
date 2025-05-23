@@ -33,18 +33,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   font-size: 62.5%;
   font-family: var(--font-family-base);
+  height: 100%;
 }
-
 
 body {
   background-color: var(--color-blue-dark);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 main {
   display: flex;
+  flex: 1;
+  overflow: hidden;
 }
 
 .header-container {
@@ -56,6 +63,7 @@ main {
   padding-right: 3rem;
   background-color: var(--color-bg-main);
   border-bottom: 1px solid var(--color-gray-light);
+  flex-shrink: 0;
 }
 
 .header-container-title {
@@ -93,13 +101,18 @@ main {
 /* MENU CONTAINER ASIDE */
 .menu-container {
   width: 20%;
-  height: 100vh;
+  height: 100%;
   padding: 2rem 2rem;
   background-color: var(--color-blue-dark);
+  flex-shrink: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-container-nav {
   margin: 2rem 0;
+  flex: 1;
 }
 
 .menu-container-nav ul {
@@ -116,13 +129,97 @@ main {
   color: var(--color-bg-main);
   font-size: var(--font-sidebar-size);
   font-weight: var(--font-sidebar-weight);
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  gap: 1.5rem;
+}
+
+.menu-container-nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-container-nav ul li a.active {
+  background-color: var(--color-blue-medium);
+  color: var(--color-bg-main);
+}
+
+.menu-container-nav ul li a.active i {
+  color: var(--color-bg-main);
 }
 
 .menu-container-nav ul li a i {
-  padding-right: 1rem;
+  font-size: 1.6rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.notification-badge {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-red-medium);
   color: var(--color-bg-main);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  min-width: 1rem;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* Estilos para acciones de administrador */
+.menu-container-actions {
+  margin-top: auto;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: none; /* Por defecto oculto */
+}
+
+.menu-container-actions.visible {
+  display: block;
+}
+
+.danger-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--color-red-light);
+  color: var(--color-red-dark);
+  border: none;
+  border-radius: 0.5rem;
   font-size: 1.4rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.danger-button:hover {
+  background-color: var(--color-red-dark);
+  color: var(--color-red-light);
+}
+
+.danger-button i {
+  font-size: 1.6rem;
 }
 
 /* FIN MENU CONTAINER ASIDE*/
@@ -130,9 +227,11 @@ main {
 /* MAIN CONTAINER */
 .main-container {
   width: 80%;
-  height: 100vh;
-  padding: 2rem 5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-bg-main);
+  overflow: hidden;
 }
 
 .main-container-header {
@@ -141,6 +240,9 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 5rem;
+  flex-shrink: 0;
+  background-color: var(--color-bg-main);
 }
 
 .main-container-header h2 {
@@ -150,7 +252,45 @@ main {
 }
 
 .main-container-tasks {
+  flex: 1;
+  padding: 2rem 5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
+/* Estilo para la barra de scroll */
+.main-container-tasks::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-container-tasks::-webkit-scrollbar-track {
+  background: var(--color-gray-light);
+  border-radius: 4px;
+}
+
+.main-container-tasks::-webkit-scrollbar-thumb {
+  background: var(--color-blue-medium);
+  border-radius: 4px;
+}
+
+.main-container-tasks::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-dark);
+}
+
+/* Ajustes para los contenedores de tareas, empleados y reportes */
+#tasks-container,
+#employees-container,
+#reports-container {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tasks-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 2rem;
 }
 
 .task-card {
@@ -199,17 +339,163 @@ main {
 .task-card-icons {
   width: 10%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .task-card-icons i {
   color: var(--color-blue-dark);
-  font-size: 2rem;
+  font-size: 2.4rem;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
+
 .task-card-icons i:hover {
   color: var(--color-blue-medium);
+  transform: scale(1.1);
+}
+
+.task-card-icons i.disabled {
+  color: var(--color-gray-dark);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.task-card-icons i.disabled:hover {
+  color: var(--color-gray-dark);
+}
+
+/* Estilos para las fechas de las tareas */
+.task-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--color-blue-light);
+  border-radius: 0.5rem;
+}
+
+.task-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--color-blue-dark);
+}
+
+.task-date i {
+  font-size: 1.4rem;
+}
+
+.task-card.completada .task-dates {
+  background-color: var(--color-green-soft);
+}
+
+/* Estilos para tareas completadas */
+.task-card.completada {
+  background-color: var(--color-blue-light);
+  opacity: 0.9;
+}
+
+/* Estilos para tareas aprobadas */
+.task-card.aprobada {
+  background-color: var(--color-green-soft);
+  opacity: 0.8;
+}
+
+.task-card.aprobada .task-card-info h3,
+.task-card.aprobada .task-card-info p,
+.task-card.aprobada .task-assigned span {
+  text-decoration: line-through;
+  color: var(--color-gray-dark);
+}
+
+/* Estilos para tareas pendientes de aprobación */
+.task-card.pendiente-aprobacion {
+  background-color: var(--color-blue-light);
+  opacity: 0.9;
+}
+
+.task-card.completada .task-card-info h3,
+.task-card.completada .task-card-info p,
+.task-card.completada .task-assigned span {
+  text-decoration: line-through;
+  color: var(--color-gray-dark);
+}
+
+/* Estilos para el estado de la tarea */
+.status {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: var(--font-button-size);
+  font-weight: var(--font-button-weight);
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-dark);
+  border: none;
+}
+
+.status.completada {
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-dark);
+  border: 2px solid var(--color-blue-medium);
+}
+
+.status.aprobada {
+  background-color: var(--color-green-soft);
+  color: var(--color-blue-dark);
+}
+
+.status.pendiente-aprobacion {
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-dark);
+  border: 2px solid var(--color-blue-medium);
+}
+
+/* Estilos para el mensaje de espera */
+.task-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-blue-light);
+  border-radius: 0.5rem;
+  color: var(--color-blue-dark);
+  font-size: 1.2rem;
+}
+
+.task-message i {
+  color: var(--color-blue-medium);
+}
+
+/* Estilos para los iconos de aprobación */
+.task-card-icons i.fa-xmark {
+  color: var(--color-red-dark);
+}
+
+.task-card-icons i.fa-xmark:hover {
+  color: var(--color-red-medium);
+}
+
+.task-card-icons i.fa-check-circle {
+  color: var(--color-blue-medium);
+}
+
+.task-card-icons i.fa-check-circle:hover {
+  color: var(--color-blue-dark);
+}
+
+.task-card.completada .task-card-icons i.fa-check {
+  color: var(--color-blue-medium);
+}
+
+.task-card.completada .task-card-icons i.fa-check:hover {
+  color: var(--color-blue-dark);
 }
 
 /* FIN MAIN CONTAINER */
@@ -287,8 +573,25 @@ main {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
+
+/* Estilos para validación de formulario */
+.input-error {
+  border-color: var(--color-red-dark) !important;
+  background-color: var(--color-red-light) !important;
+}
+
+.error-message {
+  color: var(--color-red-dark);
+  background-color: var(--color-red-light);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: var(--font-description-weight);
+}
+
 /* FIN MODAL */
 
 /* ELEMENTOS */
@@ -333,4 +636,427 @@ main {
   font-weight: var(--font-button-weight);
   border-radius: 0.5rem;
   border: none;
+}
+
+/* Estilos para usuarios */
+.usuarios-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.usuario-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.usuario-item:hover {
+  background-color: var(--color-blue-light);
+}
+
+.usuario-item.activo {
+  background-color: var(--color-blue-light);
+}
+
+.usuario-item img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.usuario-item h3 {
+  font-size: 1.2rem;
+  color: var(--color-gray-dark);
+  text-align: center;
+}
+
+/* Estilos para la selección de usuario */
+.usuarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.usuario-selection-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--color-gray-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.usuario-selection-item:hover {
+  background-color: var(--color-blue-light);
+  transform: translateY(-2px);
+}
+
+.usuario-selection-item img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--color-blue-dark);
+}
+
+.usuario-selection-item h3 {
+  font-size: 1.6rem;
+  color: var(--color-gray-dark);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.usuario-selection-item p {
+  font-size: 1.2rem;
+  color: var(--color-blue-dark);
+  text-transform: capitalize;
+}
+
+/* Estilos para el usuario activo en el header */
+.usuario-activo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.usuario-activo img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-blue-dark);
+}
+
+.usuario-activo .usuario-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.usuario-activo h3 {
+  color: var(--color-gray-dark);
+  font-size: var(--font-task-name-size);
+  font-weight: var(--font-task-name-weight);
+  margin: 0;
+}
+
+.usuario-activo p {
+  color: var(--color-blue-dark);
+  font-size: var(--font-description-size);
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.logout-button {
+  margin-left: 2rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logout-button i {
+  font-size: 2rem;
+  color: var(--color-blue-dark);
+}
+
+.logout-button:hover {
+  transform: scale(1.1);
+}
+
+.logout-button:hover i {
+  color: var(--color-blue-medium);
+}
+
+/* Estilos para la sección de empleados */
+.employee-card {
+  width: 100%;
+  display: flex;
+  background-color: var(--color-gray-light);
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.employee-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.employee-avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 3px solid var(--color-blue-dark);
+  object-fit: cover;
+}
+
+.employee-details {
+  flex: 1;
+}
+
+.employee-name {
+  font-size: var(--font-task-name-size);
+  font-weight: var(--font-task-name-weight);
+  color: var(--color-gray-dark);
+  margin-bottom: 0.5rem;
+}
+
+.employee-role {
+  font-size: var(--font-description-size);
+  color: var(--color-blue-dark);
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.employee-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-blue-light);
+  border-radius: 0.5rem;
+  min-width: 12rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: var(--font-title-weight);
+  color: var(--color-blue-dark);
+}
+
+.stat-label {
+  font-size: 1.2rem;
+  color: var(--color-gray-dark);
+}
+
+.employee-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.status-indicator {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--color-green-soft);
+}
+
+.status-indicator.ocupado {
+  background-color: var(--color-red-light);
+}
+
+.status-text {
+  font-size: 1.2rem;
+  color: var(--color-gray-dark);
+}
+
+/* Ajustes para el contenedor principal */
+.main-container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#main-title {
+  font-size: var(--font-title-size);
+  color: var(--color-blue-dark);
+  font-weight: var(--font-title-weight);
+}
+
+/* Estilos para los filtros de tareas */
+.tasks-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--color-gray-light);
+  border-radius: 0.5rem;
+}
+
+.filter-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-main);
+  color: var(--color-gray-dark);
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-dark);
+}
+
+.filter-button.active {
+  background-color: var(--color-blue-medium);
+  color: var(--color-bg-main);
+}
+
+/* Estilos para los grupos de tareas */
+.tasks-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tasks-group {
+  background-color: var(--color-gray-light);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.group-title {
+  font-size: 1.8rem;
+  color: var(--color-blue-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-blue-light);
+}
+
+.group-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.no-tasks {
+  text-align: center;
+  color: var(--color-gray-dark);
+  font-size: 1.4rem;
+  padding: 2rem;
+  background-color: var(--color-bg-main);
+  border-radius: 0.5rem;
+}
+
+/* Ajustes para las tarjetas de tareas dentro de los grupos */
+.tasks-group .task-card {
+  margin-bottom: 0;
+}
+
+/* Estilos para el indicador de actividad */
+.task-card.reciente {
+  position: relative;
+  animation: highlightTask 2s ease-in-out;
+}
+
+.activity-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-blue-medium);
+  border-radius: 2px 0 0 2px;
+  animation: pulseIndicator 2s infinite;
+}
+
+@keyframes highlightTask {
+  0% {
+    transform: translateX(-10px);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  50% {
+    transform: translateX(0);
+    box-shadow: 0 0 20px 0 rgba(37, 99, 235, 0.4);
+  }
+  100% {
+    transform: translateX(0);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+@keyframes pulseIndicator {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Estilos para acciones de administrador */
+.header-container-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+/* Estilos para la selección de usuario: foto a la izquierda, nombre y cargo a la derecha */
+.usuario-selection-nombre-cargo {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  background: var(--color-bg-main);
+  margin-bottom: 0.2rem;
+  border-radius: 6px;
+  transition: background 0.18s;
+}
+
+.usuario-selection-nombre-cargo:hover {
+  background: var(--color-gray-light);
+}
+
+.usuario-nombre-cargo-foto {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1.2rem;
+  border: 3px solid var(--color-blue-dark);
+}
+
+.usuario-nombre-cargo-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.usuario-nombre-cargo-nombre {
+  font-size: var(--font-task-name-size);
+  font-weight: var(--font-task-name-weight);
+  color: var(--color-gray-dark);
+  font-family: var(--font-family-base);
+  margin-bottom: 0.1rem;
+  line-height: 1.1;
+}
+
+.usuario-nombre-cargo-cargo {
+  font-size: var(--font-description-size);
+  color: var(--color-blue-dark);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-description-weight);
+  line-height: 1.1;
 }

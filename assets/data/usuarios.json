@@ -1,0 +1,36 @@
+{
+  "usuarios": [
+    {
+      "nombre": "Carlos",
+      "apellido": "Ramírez",
+      "foto": "./assets/images/Usuario1.png",
+      "cargo": "supervisor",
+      "tarea_asignada": "",
+      "tareas_resueltas": []
+    },
+    {
+      "nombre": "Ana",
+      "apellido": "Martínez",
+      "foto": "./assets/images/Usuario2.png",
+      "cargo": "colaborador",
+      "tarea_asignada": "",
+      "tareas_resueltas": []
+    },
+    {
+      "nombre": "Sofía",
+      "apellido": "Pérez",
+      "foto": "./assets/images/Usuario3.png",
+      "cargo": "colaborador",
+      "tarea_asignada": "",
+      "tareas_resueltas": []
+    },
+    {
+      "nombre": "Luis",
+      "apellido": "Fernández",
+      "foto": "./assets/images/Usuario4.png",
+      "cargo": "colaborador",
+      "tarea_asignada": "",
+      "tareas_resueltas": []
+    }
+  ]
+} 
